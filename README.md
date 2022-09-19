@@ -1,3 +1,4 @@
 # GensparkFullStackJavaProject
 Team Members:
-Christopher Bush
+Christopher Bush,
+Samuel Lee,
