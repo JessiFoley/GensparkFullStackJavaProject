@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const EmployeeDataService = () => {
+const BooksDataService = () => {
   function createBook(book) {
     return axios.post(`http://localhost:8080/books/addbook`, book);
   }
@@ -22,4 +22,4 @@ const EmployeeDataService = () => {
   }
 }
 
-export default EmployeeDataService;
+export default BooksDataService;
