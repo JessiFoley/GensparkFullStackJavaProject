@@ -22,10 +22,10 @@ public class BookController {
     @GetMapping("/books/{bookId}")
     public Book getBook(@PathVariable String bookId) { return this.bookService.getBookById(Integer.parseInt(bookId)); }
 
-    @PostMapping("/addbooks")
+    @PostMapping("/books/addbook")
     public Book addBook(@RequestBody Book book) { return this.bookService.addBook(book); }
 
-    @PutMapping("/updatebook")
+    @PutMapping("/books/updatebook")
     public Book updateBook(@RequestBody Book book) { return this.bookService.updateBook(book); }
 
     @DeleteMapping("/books/{bookId}")
