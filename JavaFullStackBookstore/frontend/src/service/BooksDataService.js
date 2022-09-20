@@ -2,7 +2,7 @@ import axios from "axios";
 
 const EmployeeDataService = () => {
   function createBook(book) {
-    return axios.post(`http://localhost:8080/addbook`, book);
+    return axios.post(`http://localhost:8080/books/addbook`, book);
   }
 
   function retrieveAllBooks() {
@@ -14,7 +14,7 @@ const EmployeeDataService = () => {
   }
 
   function updateBook(book) {
-    return axios.put(`http://localhost:8080/updatebook`, book);
+    return axios.put(`http://localhost:8080/books/updatebook`, book);
   }
 
   function deleteBook(id) {
