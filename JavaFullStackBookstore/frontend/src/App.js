@@ -2,23 +2,24 @@ import './App.css';
 import { React, useState, useEffect } from "react";
 import BooksDataService from "./service/BooksDataService";
 import BookInventory from './components/books/BookInventory';
-import Book from './components/books/Book';
 import axios from 'axios';
 
-function App() {
+const App = () => {
   const [books, setBooks] = useState([]);
 
   const getBooks = () => {
     //BooksDataService.retrieveAllBooks()
     axios
       .get("http://localhost:8080/books")
-      .then(res => setBooks(res.data))
+      .then(res => {
+        console.log(res.data);
+        setBooks(res.data);
+      })
       .catch(err => console.log(err.response));
   }
 
   useEffect(() => {
     getBooks();
-    console.log(books);
   }, []);
 
   return (
@@ -36,11 +37,6 @@ function App() {
           Learn React
         </a>
       </header>
-      <div>
-        {books.map(book => (
-          <Book key={book.bookId} book={book} />
-        ))}
-      </div>
       <BookInventory books={books} />
     </div>
   );
