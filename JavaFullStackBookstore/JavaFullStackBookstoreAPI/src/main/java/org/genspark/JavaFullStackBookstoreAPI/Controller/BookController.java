@@ -1,5 +1,7 @@
 package org.genspark.JavaFullStackBookstoreAPI.Controller;
 
+import org.genspark.JavaFullStackBookstoreAPI.Entity.Book;
+import org.genspark.JavaFullStackBookstoreAPI.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +16,7 @@ public class BookController {
     public String home() { return "<HTML><H1>Welcome to the Books API</H1></HTML>"; }
 
     @GetMapping("/books")
-    public List<Book> getBook() { return this.bookService.getAllBooks(); }
+    public List<Book> getBook() { return this.bookService.getBooks(); }
 
     @GetMapping("/books/{bookId}")
     public Book getBook(@PathVariable String bookId) { return this.bookService.getBookById(Integer.parseInt(bookId)); }
@@ -27,7 +29,6 @@ public class BookController {
 
     @DeleteMapping("/books/{bookId}")
     public String deleteBook(@PathVariable String bookId) {
-        this.bookService.deleteBookById(Integer.parseInt(bookId));
-        return "Book successfully deleted";
+        return this.bookService.deleteBook(Integer.parseInt(bookId));
     }
 }
