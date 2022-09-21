@@ -9,7 +9,7 @@ export const retrieveAllBooks = () => {
 };
 
 export const retrieveBook = (id) => {
-  return axios.get(`http://localhost:8080/books/{id}`);
+  return axios.get(`http://localhost:8080/books/${id}`);
 };
 
 export const updateBook = (book) => {
