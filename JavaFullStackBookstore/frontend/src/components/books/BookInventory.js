@@ -5,14 +5,25 @@ const BookInventory = (props) => {
 
   return (
     <div>
-      <h1>Test TEST</h1>
+    <table>
+      <tr>
+      <th>Title</th>
+      <th>Genre</th>
+      <th>Binding</th>
+      <th>Price</th>
+      <th>Update / Delete</th>
+      </tr>
       {
         props.books.map(book => (
-          <div key={book.bookId}>
+          <tr key={book.bookId}>
             <Book book={book} />
-          </div>
+          </tr>
         ))
       }
+    </table>
+    <div style={{textAlign:"left"}}>
+    <button style={{margin:"0"}}>Add Book</button>
+    </div>
     </div>
   );
 };

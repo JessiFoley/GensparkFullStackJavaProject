@@ -1,15 +1,20 @@
 import { React } from "react";
+import BooksDataService from "../../service/BooksDataService"
 
 const Book = (props) => {
   const { bookId, bookTitle, bookGenre, bookBinding, bookPrice } = props.book;
 
   return (
-    <div>
-      <h1>{bookTitle}</h1>
-      <h2>{bookGenre}</h2>
-      <h3>{bookBinding}</h3>
-      <h2>{bookPrice}</h2>
-    </div>
+    <>
+      <td>{bookTitle}</td>
+      <td>{bookGenre}</td>
+      <td>{bookBinding}</td>
+      <td>{bookPrice}</td>
+      <td style={{width:"11em"}}>
+        <button>Update</button>
+        <button>Delete</button>
+        </td>
+    </>
   );
 };
 
