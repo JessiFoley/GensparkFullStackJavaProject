@@ -20,7 +20,7 @@ const BookInventory = (props) => {
       {
         props.books.map(book => (
           <tr key={book.bookId}>
-            <Book book={book} books={props.books} setBooks={props.setBooks} />
+            <Book book={book} books={props.books} setBooks={props.setBooks} setBookToUpdate={props.setBookToUpdate} />
           </tr>
         ))
         }

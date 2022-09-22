@@ -11,6 +11,9 @@ const Book = (props) => {
       props.setBooks(updatedBooks)
   }
 
+  const updateButton = () =>{
+    props.setBookToUpdate(props.book)
+  }
 
 
   return (
@@ -20,7 +23,7 @@ const Book = (props) => {
       <td>{bookBinding}</td>
       <td>{bookPrice}</td>
       <td style={{width:"11em"}}>
-        <button>Update</button>
+        <Link to="/update" onClick={updateButton}><button>Update</button></Link>
         <button onClick={deleteAndRefresh}>Delete</button>
         </td>
     </>

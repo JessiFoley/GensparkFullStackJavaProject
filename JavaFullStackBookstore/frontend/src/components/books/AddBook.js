@@ -16,7 +16,6 @@ const AddBook = ({books, setBooks}) => {
             "bookBinding":binding,
             "bookPrice":price,
         }
-        //currently this doesn't seem to work
         createBook(book)
         setBooks(...books, book)
     }
