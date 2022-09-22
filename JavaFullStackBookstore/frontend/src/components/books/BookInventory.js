@@ -1,10 +1,14 @@
-import { React } from "react";
+import { React, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Book from "./Book";
 
 const BookInventory = (props) => {
-  const booksArray = Array.from(props.books)
-  const { setBooks, setBookToUpdate } = props
+  const booksArray = Array.from(props.books);
+  const { getBooks, setBooks, setBookToUpdate } = props;
+
+  useEffect(() => {
+    getBooks();
+  }, []);
 
   return (
     <div>

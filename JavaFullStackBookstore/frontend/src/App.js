@@ -8,28 +8,28 @@ import UpdateBook from './components/books/UpdateBook';
 
 const App = () => {
   const [books, setBooks] = useState([]);
-  const [bookToUpdate, setBookToUpdate] = useState({})
+  const [bookToUpdate, setBookToUpdate] = useState({});
 
-  const getBooks = () => {
+  let getBooks = () => {
     retrieveAllBooks()
       .then(res => {
         setBooks(res.data);
       })
       .catch(err => console.log(err.response));
-  };
+  }
 
   useEffect(() => {
     getBooks();
-  }, [books]);
+  }, []);
 
   return (
     <Router>
       <div className="App">
         <div className="container">
           <Routes>
-            <Route path="/" element={<BookInventory books={books} setBooks={setBooks} setBookToUpdate={setBookToUpdate} />} />
-            <Route path="/add" element={<AddBook books={books} setBooks={setBooks} />} />
-            <Route path="/update" element={<UpdateBook books={books} setBooks={setBooks} bookToUpdate={bookToUpdate} />} />
+            <Route path="/" element={<BookInventory books={books} getBooks={getBooks} setBooks={setBooks} setBookToUpdate={setBookToUpdate} />} />
+            <Route path="/add" element={<AddBook />} />
+            <Route path="/update" element={<UpdateBook bookToUpdate={bookToUpdate} />} />
           </Routes>
         </div>
       </div>

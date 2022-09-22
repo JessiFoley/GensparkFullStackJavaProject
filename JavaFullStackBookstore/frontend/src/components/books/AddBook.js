@@ -2,27 +2,31 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { createBook } from '../../service/BooksDataService'
 
-const AddBook = ({ books, setBooks }) => {
+const initialState = {
+    "bookTitle": "",
+    "bookGenre": "",
+    "bookBinding": "",
+    "bookPrice": 0,
+};
 
-    const [title, setTitle] = useState("")
-    const [genre, setGenre] = useState("")
-    const [binding, setBinding] = useState("")
-    const [price, setPrice] = useState(0)
+const AddBook = () => {
+    const [bookToAdd, setBookToAdd] = useState(initialState);
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
 
     const onSubmit = (e) => {
         e.preventDefault();
 
-        const book = {
-            "bookTitle": title,
-            "bookGenre": genre,
-            "bookBinding": binding,
-            "bookPrice": price,
-        }
-        createBook(book)
-        setBooks(...books, book)
-        navigate("/")
+        createBook(bookToAdd)
+            .then(() => setBookToAdd(initialState))
+            .then(() => navigate("/"));
+    }
+
+    const handleChanges = (e) => {
+        setBookToAdd({
+            ...bookToAdd,
+            [e.target.name]: e.target.value,
+        });
     }
 
     return (
@@ -32,19 +36,19 @@ const AddBook = ({ books, setBooks }) => {
             <form style={{ textAlign: "left", marginLeft: "10em" }} onSubmit={onSubmit}>
                 <label htmlFor="title">Title</label>
                 <br />
-                <input type="text" name="title" id="title" required={true} placeholder="Title" onChange={(e) => setTitle(e.target.value)} />
+                <input type="text" name="bookTitle" id="title" required={true} placeholder="Title" onChange={handleChanges} />
                 <br />
                 <label htmlFor="genre">Genre</label>
                 <br />
-                <input type="text" name="genre" id="genre" required={true} placeholder="Genre" onChange={(e) => setGenre(e.target.value)} />
+                <input type="text" name="bookGenre" id="genre" required={true} placeholder="Genre" onChange={handleChanges} />
                 <br />
                 <label htmlFor="binding">Binding</label>
                 <br />
-                <input type="text" name="binding" id="binding" required={true} placeholder="Binding" onChange={(e) => setBinding(e.target.value)} />
+                <input type="text" name="bookBinding" id="binding" required={true} placeholder="Binding" onChange={handleChanges} />
                 <br />
                 <label htmlFor="price">Price</label>
                 <br />
-                <input type="text" name="price" id="price" required={true} placeholder="Price" onChange={(e) => setPrice(e.target.value)} />
+                <input type="text" name="bookPrice" id="price" required={true} placeholder="Price" onChange={handleChanges} />
                 <br />
                 <button style={{ width: "auto" }} type="submit">Add book</button>
             </form>
