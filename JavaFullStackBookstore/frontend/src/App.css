@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+table, td, th, tr {
+  border: 1px solid;
+}
+
+td, th {
+  height: 1.5em;
+}
+
+table {
+  width: 100%;
+}
+
+th {
+  background-color: black;
+  color:white;
+}
+
+button{
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+label {
+  font-weight: bold;
+}
+
+.container {
+  width:80%;
+  margin:auto;
+}
+
+input {
+  height:1.5em;
+  width:35em;
+}
