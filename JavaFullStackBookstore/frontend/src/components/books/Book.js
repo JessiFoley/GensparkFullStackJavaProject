@@ -1,17 +1,17 @@
 import { React } from "react";
-import {deleteBook} from "../../service/BooksDataService"
+import { deleteBook } from "../../service/BooksDataService"
 import { Link } from "react-router-dom"
 
 const Book = (props) => {
   const { bookId, bookTitle, bookGenre, bookBinding, bookPrice } = props.book;
-  
-  const deleteAndRefresh = () =>{
+
+  const deleteAndRefresh = () => {
     deleteBook(bookId)
-      const updatedBooks = props.books.filter(book => book.bookId !== bookId)
-      props.setBooks(updatedBooks)
+    const updatedBooks = props.books.filter(book => book.bookId !== bookId)
+    props.setBooks(updatedBooks)
   }
 
-  const updateButton = () =>{
+  const updateButton = () => {
     props.setBookToUpdate(props.book)
   }
 
@@ -22,10 +22,10 @@ const Book = (props) => {
       <td>{bookGenre}</td>
       <td>{bookBinding}</td>
       <td>{bookPrice}</td>
-      <td style={{width:"11em"}}>
+      <td style={{ width: "11em" }}>
         <Link to="/update" onClick={updateButton}><button>Update</button></Link>
         <button onClick={deleteAndRefresh}>Delete</button>
-        </td>
+      </td>
     </>
   );
 };
