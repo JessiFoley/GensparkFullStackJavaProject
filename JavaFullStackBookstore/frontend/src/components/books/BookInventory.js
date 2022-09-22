@@ -1,4 +1,5 @@
 import { React } from "react";
+import { Link } from "react-router-dom";
 import Book from "./Book";
 
 const BookInventory = (props) => {
@@ -6,6 +7,7 @@ const BookInventory = (props) => {
   return (
     <div>
     <table>
+      <thead>
       <tr>
       <th>Title</th>
       <th>Genre</th>
@@ -13,16 +15,19 @@ const BookInventory = (props) => {
       <th>Price</th>
       <th>Update / Delete</th>
       </tr>
+      </thead>
+      <tbody>
       {
         props.books.map(book => (
           <tr key={book.bookId}>
-            <Book book={book} />
+            <Book book={book} books={props.books} setBooks={props.setBooks} />
           </tr>
         ))
-      }
+        }
+        </tbody>
     </table>
     <div style={{textAlign:"left"}}>
-    <button style={{margin:"0"}}>Add Book</button>
+    <Link to="/add"><button style={{margin:"0"}}>Add Book</button></Link>
     </div>
     </div>
   );

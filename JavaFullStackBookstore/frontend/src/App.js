@@ -2,6 +2,8 @@ import './App.css';
 import { React, useEffect, useState, } from "react";
 import * as BooksDataService from "./service/BooksDataService";
 import BookInventory from './components/books/BookInventory';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import AddBook from './components/books/AddBook';
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -19,9 +21,16 @@ const App = () => {
   }, []);
 
   return (
+    <Router>
     <div className="App">
-      <BookInventory books={books} />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<BookInventory books={books} setBooks={setBooks} />} />
+          <Route path="/add" element={<AddBook books={books} setBooks={setBooks} />} />
+        </Routes>
+      </div>
     </div>
+    </Router>
   );
 }
 
