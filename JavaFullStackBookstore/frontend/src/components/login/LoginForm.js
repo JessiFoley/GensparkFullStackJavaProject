@@ -1,27 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useInsertionEffect, useState } from 'react'
 
 import bcrypt from "bcryptjs"
 
-const LoginForm = () => {
-
-    const [password, setPassword] = useState()
-
-    const authenticate = async () => {
-        const salt = bcrypt.genSaltSync(10)
-        alert(salt)
-
-        //the salt from above has been hardcoded so it won't change every time.
-        alert(bcrypt.hashSync(password, "$2a$10$FJI.ukGRoDjUQwjmrYgNPu"))
-        
+const LoginForm = ({setUserAttempt, userAttempt, getUsers, authenticate}) => {
+    
+    const handleChanges = e =>{
+        setUserAttempt({
+            ...userAttempt,
+            [e.target.name]: e.target.value
+    })
     }
+
+    useEffect(() =>{
+        getUsers()
+    }, []);
 
   return (
     <div>
         <form onSubmit={authenticate}>
             <label htmlFor='username'>Username </label>
-            <input type="text" name="username" id="username" required={true} />
+            <input type="text" name="username" id="username" required={true} onChange={handleChanges} />
             <label htmlFor='password'>Password</label>
-            <input type="password" name="password" id="password" required={true} onChange={(e) => setPassword(e.target.value)} />
+            <input type="password" name="password" id="password" required={true} onChange={handleChanges} />
             <input type="submit"></input>
         </form>
     </div>
