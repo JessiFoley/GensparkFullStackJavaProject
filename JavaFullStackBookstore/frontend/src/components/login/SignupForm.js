@@ -14,11 +14,12 @@ const SignupForm = ({ getUsers }) => {
     const username = usernameInputRef.current.value;
     const password = passwordInputRef.current.value;
     const hashed = bcrypt.hashSync(password, 10);
+
     const credentials = {
       "username": username,
       "password": hashed
     }
-    console.log(credentials);
+
     createUser(credentials)
       .then(() => navigate("/"));
   }
