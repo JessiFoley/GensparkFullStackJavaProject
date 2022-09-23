@@ -36,6 +36,11 @@
     transform: rotate(360deg);
   }
 }
+form {
+text-align: left;
+margin-left: 15%;
+width: 80%;
+}
 
 table, td, th, tr {
   border: 1px solid;
@@ -69,6 +74,7 @@ label {
 }
 
 input {
-  height:1.5em;
-  width:80%;
+  height: 1.5em;
+  width : 80%;
+  margin: auto;
 }

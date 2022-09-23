@@ -33,7 +33,7 @@ const AddBook = () => {
 
         <div>
             <h2>Add a Book</h2>
-            <form style={{ textAlign: "left", marginLeft: "10em" }} onSubmit={onSubmit}>
+            <form onSubmit={onSubmit}>
                 <label htmlFor="title">Title</label>
                 <br />
                 <input type="text" name="bookTitle" id="title" required={true} placeholder="Title" onChange={handleChanges} />
