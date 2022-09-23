@@ -1,34 +1,26 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createUser } from '../../service/UsersDataService';
 import { useNavigate } from 'react-router-dom';
 import bcrypt from "bcryptjs";
 
-const initialState = {
-  "username": "",
-  "password": ""
-};
-
 const SignupForm = ({ getUsers }) => {
-  const [newUser, setNewUser] = useState(initialState);
+  const usernameInputRef = useRef("");
+  const passwordInputRef = useRef("");
 
   const navigate = useNavigate();
 
-  const handleChanges = e => {
-    setNewUser({
-      ...newUser,
-      [e.target.name]: e.target.value
-    });
-  }
-
   const handleSubmit = e => {
     e.preventDefault();
-    const hashed = bcrypt.hashSync(newUser.password, 10);
-    setNewUser({
-      ...newUser,
-      "password": hashed,
-    });
-    createUser(newUser)
-      .then(() => navigate("/login"));
+    const username = usernameInputRef.current.value;
+    const password = passwordInputRef.current.value;
+    const hashed = bcrypt.hashSync(password, 10);
+    const credentials = {
+      "username": username,
+      "password": hashed
+    }
+    console.log(credentials);
+    createUser(credentials)
+      .then(() => navigate("/"));
   }
 
   useEffect(() => {
@@ -39,9 +31,9 @@ const SignupForm = ({ getUsers }) => {
     <div>
       <form onSubmit={handleSubmit}>
         <label htmlFor='username'>Username </label>
-        <input type="text" name="username" id="username" required={true} onChange={handleChanges} />
+        <input type="text" name="username" id="username" required={true} ref={usernameInputRef} />
         <label htmlFor='password'>Password</label>
-        <input type="password" name="password" id="password" required={true} onChange={handleChanges} />
+        <input type="password" name="password" id="password" required={true} ref={passwordInputRef} />
         <button type="submit">Sign Up</button>
       </form>
     </div>

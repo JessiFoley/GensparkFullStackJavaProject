@@ -59,7 +59,7 @@ const App = () => {
         <div className="container">
           <Header />
           <Routes>
-            <Route path="/login" element={<LoginForm getUsers={getUsers} setUserAttempt={setUserAttempt} userAttempt={userAttempt} authenticate={authenticate} />} />
+            <Route path="/" element={<LoginForm getUsers={getUsers} setUserAttempt={setUserAttempt} userAttempt={userAttempt} authenticate={authenticate} />} />
             <Route path="/signup" element={<SignupForm getUsers={getUsers} />} />
           </Routes>
           <Footer />
