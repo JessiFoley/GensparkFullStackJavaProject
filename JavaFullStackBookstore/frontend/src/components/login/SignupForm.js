@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { createUser } from '../../service/UsersDataService';
 import { useNavigate } from 'react-router-dom';
 import bcrypt from "bcryptjs";
+import validPassword from './ValidatePassword';
 
 const SignupForm = ({ getUsers }) => {
   const usernameInputRef = useRef("");
@@ -9,35 +10,11 @@ const SignupForm = ({ getUsers }) => {
 
   const navigate = useNavigate();
 
-  const validPassword = (() => {
-
-    const passwordForValidation = document.getElementById("password").value
-    const repeatPasswordForValidation = document.getElementById("repeatPassword").value
-
-    const hasLowercase = /[a-z]+/.test(passwordForValidation)
-    const hasUppercase = /[A-Z]+/.test(passwordForValidation)
-    const hasDigit = /[0-9]+/.test(passwordForValidation)
-    
-    if(passwordForValidation === repeatPasswordForValidation && hasLowercase && hasUppercase && hasDigit){
-      return true;
-    }else if (passwordForValidation !== repeatPasswordForValidation) {
-      alert("Passwords must match")
-    }else if (!hasLowercase){
-      alert("Must contain a lowercase letter")
-    }else if (!hasUppercase){
-      alert("Must contain an Uppercase letter")
-    }else {
-      alert("Must contain a number")
-    }
-    return false;
-  })
-
   const handleSubmit = e => {
     e.preventDefault();
     if(validPassword()){
       const username = usernameInputRef.current.value;
       const password = passwordInputRef.current.value;
-      alert(validPassword)
       const hashed = bcrypt.hashSync(password, 10);
       const credentials = {
         "username": username,
