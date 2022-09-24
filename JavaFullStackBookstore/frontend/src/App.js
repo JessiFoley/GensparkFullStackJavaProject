@@ -46,7 +46,6 @@ const App = () => {
         if (bcrypt.compareSync(userAttempt.password, user.password)) {
           setLoggedIn(userAttempt?.username);
           navigate("/");
-          console.log(loggedIn);
         }
       }
     });
