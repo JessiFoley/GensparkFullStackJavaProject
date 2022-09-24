@@ -20,7 +20,6 @@ const SignupForm = ({ getUsers }) => {
         "username": username,
         "password": hashed
       }
-      alert(JSON.stringify(credentials));
       createUser(credentials)
         .then(() => navigate("/"));
     }
