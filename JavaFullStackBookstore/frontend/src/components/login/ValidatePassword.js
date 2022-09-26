@@ -6,17 +6,25 @@ const validPassword = (() => {
     const hasLowercase = /[a-z]+/.test(passwordForValidation)
     const hasUppercase = /[A-Z]+/.test(passwordForValidation)
     const hasDigit = /[0-9]+/.test(passwordForValidation)
+
+    const errLabel = document.getElementById("errLabel")
+    errLabel.style = "display:hidden;"
+    errLabel.textContent = ""
     
     if(passwordForValidation === repeatPasswordForValidation && hasLowercase && hasUppercase && hasDigit){
       return true;
     }else if (passwordForValidation !== repeatPasswordForValidation) {
-      alert("Passwords must match")
+      errLabel.style = "display:inline; color:red; font-weight:normal;"
+      errLabel.textContent = "Passwords must match!"
     }else if (!hasLowercase){
-      alert("Must contain a lowercase letter")
+      errLabel.style = "display:inline; color:red; font-weight:normal;"
+      errLabel.textContent = "Must contain a lowercase letter!"
     }else if (!hasUppercase){
-      alert("Must contain an Uppercase letter")
+      errLabel.style = "display:inline; color:red; font-weight:normal;"
+      errLabel.textContent = "Must contain an uppercase letter!"
     }else {
-      alert("Must contain a number")
+      errLabel.style = "display:inline; color:red; font-weight:normal;"
+      errLabel.textContent = "Must contain a number!"
     }
     return false;
   })

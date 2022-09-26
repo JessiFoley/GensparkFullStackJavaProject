@@ -10,6 +10,16 @@ const BookInventory = (props) => {
     getBooks();
   }, []);
 
+  if(booksArray.length === 0){
+    return <>
+    <h3>Please add a Book</h3>
+    <div style={{ textAlign: "left" }}>
+        <Link to="/add"><button style={{ margin: "0" }}>Add Book</button></Link>
+      </div>
+      </>
+  }
+
+  if(booksArray.length > 0){
   return (
     <div>
       <table>
@@ -37,6 +47,7 @@ const BookInventory = (props) => {
       </div>
     </div>
   );
+  }
 };
 
 export default BookInventory;

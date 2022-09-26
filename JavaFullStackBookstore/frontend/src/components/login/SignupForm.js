@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { createUser } from '../../service/UsersDataService';
 import { useNavigate } from 'react-router-dom';
 import bcrypt from "bcryptjs";
@@ -25,10 +25,6 @@ const SignupForm = ({ getUsers }) => {
     }
   }
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -43,6 +39,8 @@ const SignupForm = ({ getUsers }) => {
         <label htmlFor='repeatPassword'>Repeat Password</label>
         <br />
         <input type="password" name="repeatPassword" id="repeatPassword" required={true} />
+        <br />
+        <label id="errLabel"></label>
         <br />
         <button type="submit">Sign Up</button>
       </form>

@@ -41,7 +41,7 @@ const App = () => {
   }
 
   const authenticate = async () => {
-    users.map(user => {
+    users.forEach(user => {
       if (user.username === userAttempt.username) {
         if (bcrypt.compareSync(userAttempt.password, user.password)) {
           setLoggedIn(userAttempt?.username);
