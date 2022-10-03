@@ -12,7 +12,6 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
-
     @GetMapping("/users")
     public List<User> getUsers(){
         return this.userService.getUsers();
