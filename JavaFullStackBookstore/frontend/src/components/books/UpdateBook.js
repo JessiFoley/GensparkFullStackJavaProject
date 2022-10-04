@@ -11,7 +11,7 @@ const UpdateBook = ({ bookToUpdate }) => {
         e.preventDefault();
 
         updateBook(updatedBook)
-            .then(() => navigate("/"));
+            .then(() => navigate("/inventory"));
     }
 
     const handleChanges = (e) => {

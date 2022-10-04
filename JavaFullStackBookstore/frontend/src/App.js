@@ -8,8 +8,10 @@ import UpdateBook from './components/books/UpdateBook';
 import Header from './components/Header';
 import Footer from './components/Footer'
 import LoginForm from './components/login/LoginForm';
+import Home from "./components/Home";
 import { retrieveAllUsers } from './service/UsersDataService';
 import SignupForm from './components/login/SignupForm';
+import LandingPage from "./components/LandingPage";
 import bcrypt from "bcryptjs";
 
 const App = () => {
@@ -55,9 +57,10 @@ const App = () => {
     return (
       <div className="App">
         <div className="container">
-          <Header />
+          <Header loggedIn={loggedIn} />
           <Routes>
-            <Route path="/" element={<LoginForm getUsers={getUsers} setUserAttempt={setUserAttempt} userAttempt={userAttempt} authenticate={authenticate} />} />
+            <Route exact path="/" element={<LandingPage getUsers={getUsers} setUserAttempt={setUserAttempt} userAttempt={userAttempt} authenticate={authenticate} />} />
+            <Route path="/login" element={<LoginForm getUsers={getUsers} setUserAttempt={setUserAttempt} userAttempt={userAttempt} authenticate={authenticate} />} />
             <Route path="/signup" element={<SignupForm getUsers={getUsers} />} />
           </Routes>
           <Footer />
@@ -69,9 +72,10 @@ const App = () => {
   return (
     <div className="App">
       <div className="container">
-        <Header />
+        <Header loggedIn={loggedIn} />
         <Routes>
-          <Route exact path="/" element={<BookInventory books={books} getBooks={getBooks} setBooks={setBooks} setBookToUpdate={setBookToUpdate} />} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/inventory" element={<BookInventory books={books} getBooks={getBooks} setBooks={setBooks} setBookToUpdate={setBookToUpdate} />} />
           <Route path="/add" element={<AddBook />} />
           <Route path="/update" element={<UpdateBook bookToUpdate={bookToUpdate} />} />
         </Routes>
