@@ -15,6 +15,11 @@ const Nav = () => {
           <Link class="nav-link" to="#">Contact Us</Link>
         </li>
       </ul>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Sign Out</a>
+        </li>
+      </ul>
     </nav>
 
   )
