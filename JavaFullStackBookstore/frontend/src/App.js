@@ -13,6 +13,7 @@ import { retrieveAllUsers } from './service/UsersDataService';
 import SignupForm from './components/login/SignupForm';
 import LandingPage from "./components/LandingPage";
 import bcrypt from "bcryptjs";
+import AltFooter from './components/AltFooter';
 
 const App = () => {
   const [books, setBooks] = useState([]);
@@ -79,7 +80,7 @@ const App = () => {
           <Route path="/add" element={<AddBook />} />
           <Route path="/update" element={<UpdateBook bookToUpdate={bookToUpdate} />} />
         </Routes>
-        <Footer />
+        <AltFooter />
       </div>
     </div>
   );
